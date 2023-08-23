@@ -28,6 +28,7 @@ class ProductView extends GetView<ProductController> {
                 showBadge: true,
                 badgeContent: Text(controller.cartProduct.length.toString()),
                 child: IconButton(
+                    key: const Key("cart"),
                     padding: const EdgeInsets.all(8),
                     onPressed: () {
                       Get.toNamed(Routes.CART);
@@ -95,6 +96,7 @@ class ProductView extends GetView<ProductController> {
                         children: List.generate(controller.listProduct.length,
                             (index) {
                           return GestureDetector(
+                            key:  Key('CardProduct$index'),
                               child: ProductCard(
                                 controller: controller,
                                 index: index,
