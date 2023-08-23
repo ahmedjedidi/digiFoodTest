@@ -22,6 +22,9 @@ class MockProductView extends GetView<MockProductController> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
                 child: TextFormField(
                   controller: TextEditingController(),
+                  onChanged: (value) {
+                    controller.runFilter(value);
+                  },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),

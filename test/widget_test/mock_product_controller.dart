@@ -40,4 +40,15 @@ class MockProductController extends GetxController {
   navigateToDetail(index) {
     Get.toNamed(Routes.DETAIL_PRODUCT, arguments: index);
   }
+
+    runFilter(String enteredKeyword) async {
+  
+    
+      listProduct.value = listProduct
+          .where((product) => product.title
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+    
+  }
 }

@@ -64,4 +64,27 @@ void main() {
     }
     expect(find.byType(CircularProgressIndicator), findsNothing);
   });
+
+    testWidgets('search product test', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Digi Food Test",
+        initialRoute: MockAppPages.INITIAL,
+        getPages: MockAppPages.routes,
+      ),
+    );
+    await tester.pumpAndSettle();
+    // Verify initialx configuration
+    expect(find.byType(TextFormField),findsOneWidget);
+    expect(find.text('title2'), findsOneWidget);
+    // Tap title1 in searchbar 
+    await tester.enterText(find.byType(TextFormField), 'title1');
+    // refrech widget
+    await tester.pumpAndSettle();
+    //title2 is hided 
+    expect(find.text('title2'), findsNothing);
+
+
+  });
 }
